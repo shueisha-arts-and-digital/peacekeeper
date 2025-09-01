@@ -118,7 +118,7 @@ function getDefaultConfigs() {
       style: {
         background: "linear-gradient(to right, rgba(255,214,10,0.5), rgba(255,69,58,0.5))",
       },
-      url: "^https://github.com/pj8/(peacekeeper|Pj8.SentryModule|sssh|dbdb|ms-teams-notify-orb|github-backlog-sync|vscode-twig-goto|vscode-bear-goto|image|qiq-vscode-extension|composer-aws-assume-role-plugin)",
+      url: "^https://github.com/shueisha-arts-and-digital/(peacekeeper|Pj8.SentryModule|sssh|dbdb|ms-teams-notify-orb|github-backlog-sync|vscode-twig-goto|vscode-bear-goto|image|qiq-vscode-extension|composer-aws-assume-role-plugin)",
     },
   ];
 }

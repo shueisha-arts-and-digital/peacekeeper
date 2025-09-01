@@ -50,7 +50,7 @@ function getDefaultConfigs() {
       style: {
         background: "linear-gradient(to right, rgba(255,214,10,0.5), rgba(255,69,58,0.5))",
       },
-      url: "^https://github.com/pj8/(peacekeeper|Pj8.SentryModule|sssh|dbdb|ms-teams-notify-orb|github-backlog-sync|vscode-twig-goto|vscode-bear-goto|image|qiq-vscode-extension|composer-aws-assume-role-plugin)",
+      url: "^https://github.com/shueisha-arts-and-digital/(peacekeeper|Pj8.SentryModule|sssh|dbdb|ms-teams-notify-orb|github-backlog-sync|vscode-twig-goto|vscode-bear-goto|image|qiq-vscode-extension|composer-aws-assume-role-plugin)",
     },
   ];
 }
@@ -103,15 +103,15 @@ testUrl("production", "https://foo-admin-bar.foo.test");
 testUrl("production", "https://foo-admin-bar.foo.test/");
 testUrl("production", "https://foo-admin-bar.foo.test/path");
 testUrl("production", "https://tx-ixxxxxx.sxxxxxxx.cx.jx");
-testUrl("repositories", "https://github.com/pj8/peacekeeper");
-testUrl("repositories", "https://github.com/pj8/Pj8.SentryModule");
-testUrl("repositories", "https://github.com/pj8/sssh");
-testUrl("repositories", "https://github.com/pj8/dbdb");
-testUrl("repositories", "https://github.com/pj8/ms-teams-notify-orb");
-testUrl("repositories", "https://github.com/pj8/github-backlog-sync");
-testUrl("repositories", "https://github.com/pj8/vscode-twig-goto");
-testUrl("repositories", "https://github.com/pj8/vscode-bear-goto");
-testUrl("repositories", "https://github.com/pj8/image");
+testUrl("repositories", "https://github.com/shueisha-arts-and-digital/peacekeeper");
+testUrl("repositories", "https://github.com/shueisha-arts-and-digital/Pj8.SentryModule");
+testUrl("repositories", "https://github.com/shueisha-arts-and-digital/sssh");
+testUrl("repositories", "https://github.com/shueisha-arts-and-digital/dbdb");
+testUrl("repositories", "https://github.com/shueisha-arts-and-digital/ms-teams-notify-orb");
+testUrl("repositories", "https://github.com/shueisha-arts-and-digital/github-backlog-sync");
+testUrl("repositories", "https://github.com/shueisha-arts-and-digital/vscode-twig-goto");
+testUrl("repositories", "https://github.com/shueisha-arts-and-digital/vscode-bear-goto");
+testUrl("repositories", "https://github.com/shueisha-arts-and-digital/image");
 testUrl("unknown", "https://foo.test");
 testUrl("unknown", "https://foo.test/?q=stage-admin-feature-foo.bar.test");
 testUrl("unknown", "https://foo.test/foo?q=admin-feature-foo.bar.test");
