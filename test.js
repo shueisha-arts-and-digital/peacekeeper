@@ -118,4 +118,4 @@ testUrl("unknown", "https://foo.test/foo?q=admin-feature-foo.bar.test");
 testUrl("unknown", "https://manage.test/dashboard/dev-admin/x");
 testUrl("unknown", "https://manage.test/dashboard/stage-admin/x");
 testUrl("unknown", "https://manage.test/dashboard/admin/x");
-testUrl("unknown", "https://github.com/pj8/.github");
+testUrl("unknown", "https://github.com/shueisha-arts-and-digital/.github");
