@@ -4,6 +4,12 @@
     sender,
     callback
   ) {
+    // 既存のpeacekeeperスタイルタグを削除
+    const existingStyle = document.getElementById('peacekeeper-style');
+    if (existingStyle) {
+      existingStyle.remove();
+    }
+
     if (message.type !== "notify") {
       return;
     }
@@ -12,7 +18,6 @@
       return;
     }
 
-    let body = document.querySelector("html body");
     let config = message.config;
 
     // alert
@@ -21,8 +26,18 @@
     }
 
     // style
-    if (config.style) {
+    if(typeof config.style === 'object') {
+      let body = document.querySelector("html body");
       Object.assign(body.style, config.style);
+    } else if (typeof config.style === 'string') {
+      const styleTag = document.createElement('style');
+      styleTag.id = 'peacekeeper-style';
+      let cssRules = '';
+      if (config.style) {
+        cssRules += `${config.style} !important;`;
+      }
+      styleTag.textContent = cssRules;
+      document.head.appendChild(styleTag);
     }
 
     // favicon
