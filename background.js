@@ -1,5 +1,4 @@
 chrome.tabs.onUpdated.addListener(async function (tabId, changeInfo, tab) {
-  if (changeInfo.status !== "complete") return;
   if (!tab.url) return;
 
   let configs = await getObjectFromStorage("configs");
@@ -9,14 +8,42 @@ chrome.tabs.onUpdated.addListener(async function (tabId, changeInfo, tab) {
   chrome.tabs.sendMessage(
     tabId,
     { type: "notify", config: matchedConfig },
-    null
+    function (response) {
+      if (chrome.runtime.lastError) {
+        // エラーを無視(Content scriptがまだ読み込まれていない場合など)
+        console.log("[Peacekeeper] Message not received:", chrome.runtime.lastError.message);
+      }
+    }
+  );
+});
+
+// URL変更を検出
+chrome.webNavigation.onHistoryStateUpdated.addListener(async function (details) {
+  let configs = await getObjectFromStorage("configs");
+  if (!configs) return;
+
+  let matchedConfig = getMatchedConfig(details.url, configs);
+  chrome.tabs.sendMessage(
+    details.tabId,
+    { type: "notify", config: matchedConfig },
+    function (response) {
+      if (chrome.runtime.lastError) {
+        // エラーを無視(Content scriptがまだ読み込まれていない場合など)
+        console.log("[Peacekeeper] Message not received:", chrome.runtime.lastError.message);
+      }
+    }
   );
 });
 
 function getMatchedConfig(url, configs) {
   const urlObj = new URL(url);
-  const originAndPath = urlObj.origin + urlObj.pathname;
-  return configs.find((config) => originAndPath.match(new RegExp(config.url)));
+  return configs.find((config) => {
+    const matchTarget = config.includeQueryParams
+      ? urlObj.origin + urlObj.pathname + urlObj.search
+      : urlObj.origin + urlObj.pathname;
+
+    return matchTarget.match(new RegExp(config.url));
+  });
 }
 
 chrome.action.onClicked.addListener(function (tab) {

@@ -44,6 +44,10 @@
 ### style
 - Change style `backgroundColor`
 ```json
+// style string
+"style": "#selector { background-color: rgba(255,69,58,1) !important; }",
+
+// or style object
 "style": {
   "backgroundColor": "yellow"
 },
