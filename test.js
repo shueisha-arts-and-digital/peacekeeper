@@ -65,7 +65,7 @@ testUrl("repositories", "https://github.com/shueisha-arts-and-digital/sssh");
 testUrl("repositories", "https://github.com/shueisha-arts-and-digital/vscode-bear-goto");
 testUrl("repositories", "https://github.com/shueisha-arts-and-digital/vscode-twig-goto");
 
-// includeQueryParams tests
+// includeQueryParams tests (S3 prefix tests)
 testUrl("development", "https://ap-northeast-1.console.aws.amazon.com/s3/buckets/foo-bar?region=ap-northeast-1&prefix=dev/&showversions=false");
 testUrl("development", "https://us-east-1.console.aws.amazon.com/s3/buckets/foo-bar?region=us-east-1&prefix=dev/foo/bar&showversions=false");
 testUrl("development", "https://ap-northeast-1.console.aws.amazon.com/s3/buckets/foo-bar?prefix=dev%2F&region=ap-northeast-1&tab=objects");
@@ -75,6 +75,10 @@ testUrl("staging", "https://us-east-1.console.aws.amazon.com/s3/buckets/test-buc
 testUrl("production", "https://ap-northeast-1.console.aws.amazon.com/s3/buckets/foo-bar?prefix=prod/&region=ap-northeast-1");
 testUrl("production", "https://eu-west-1.console.aws.amazon.com/s3/buckets/foo-bar?prefix=prod%2Fdata%2F&region=eu-west-1");
 testUrl("unknown", "https://ap-northeast-1.console.aws.amazon.com/s3/buckets/foo-bar?region=ap-northeast-1&tab=objects");
+
+// S3 bucket name tests
+testUrl("staging", "https://ap-northeast-1.console.aws.amazon.com/s3/buckets/stg-bucket?region=ap-northeast-1&tab=objects");
+testUrl("production", "https://ap-northeast-1.console.aws.amazon.com/s3/buckets/prd-bucket?region=ap-northeast-1&tab=objects");
 
 // ECS
 testUrl("unknown", "https://ap-northeast-1.console.aws.amazon.com/ecs/v2/clusters/foo/services/?region=ap-northeast-1");
