@@ -14,45 +14,36 @@
 ![](after.png)
 
 ## Configs
+
 ### url (required)
 - Specify target URL with regular expression
 ```json
 "url": "https://.*stage-admin.+"
 ```
-### alert
-- Run JavaScript `alert("blah blah blah")`
+### includeQueryParams
+- Whether to include query parameters in URL matching (default: false)
 ```json
-"alert": "blah blah blah",
+"includeQueryParams": true,
 ```
-- Disable alert
+
+### includeHash
+- Whether to include hash in URL matching (default: false)
 ```json
-"alert": false,
+"includeHash": true,
 ```
+
 ### favicon
 - Change the favicon
 ```json
 "favicon": {
-  "href": "URL or Data URI",
-  "rel": "shortcut icon",
-  "type": "image/x-icon"
+  "rel": "icon",
+  "type": "image/svg+xml",
+  "href": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M8 1 L15 14 L1 14 Z' fill='%23FFC107' stroke='%23F57F17' stroke-width='0.5'/%3E%3C/svg%3E"
 },
 ```
-- Disable to change the favicon
-```json
-"favicon": false,
-```
-### style
-- Change style `backgroundColor`
-```json
-// style string
-"style": "#selector { background-color: rgba(255,69,58,1) !important; }",
 
-// or style object
-"style": {
-  "backgroundColor": "yellow"
-},
-```
-- Disable to change style
+### style
+- Change style
 ```json
-"style": false,
+"style": "#selector { background-color: rgba(255,69,58,1) !important; }",
 ```

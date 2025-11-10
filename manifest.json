@@ -1,10 +1,11 @@
 {
   "manifest_version": 3,
   "name": "Peacekeeper",
-  "version": "1.11.0",
+  "version": "1.12.0",
   "description": "Peacekeeper will notify you for each website you specify.",
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
   },
   "content_scripts": [
     {
