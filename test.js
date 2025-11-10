@@ -86,8 +86,11 @@ testUrl("development", "https://ap-northeast-1.console.aws.amazon.com/ecs/v2/clu
 testUrl("staging", "https://ap-northeast-1.console.aws.amazon.com/ecs/v2/clusters/stg-foo/services/?region=ap-northeast-1");
 testUrl("production", "https://ap-northeast-1.console.aws.amazon.com/ecs/v2/clusters/prd-foo/services/?region=ap-northeast-1");
 
-// includeHash tests(ElastiCache,RDS,OpenSearch)
+// includeHash tests(ElastiCache,RDS,OpenSearch,Lambda)
 testUrl("production", "https://ap-northeast-1.console.aws.amazon.com/elasticache/home?region=ap-northeast-1#/valkey/prd-cache-cluster");
 testUrl("production", "https://ap-northeast-1.console.aws.amazon.com/rds/home?region=ap-northeast-1#database:id=prd-db-cluster;is-cluster=true");
 testUrl("production", "https://ap-northeast-1.console.aws.amazon.com/rds/home?region=ap-northeast-1#database:id=prd-db-1;is-cluster=false");
 testUrl("production", "https://ap-northeast-1.console.aws.amazon.com/aos/home?region=ap-northeast-1#opensearch/domains/foo-prod")
+testUrl("staging", "https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1#/functions/foo-stg-function?tab=code");
+testUrl("staging", "https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1#/applications/foo-stg-application");
+testUrl("staging", "https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1#/statemachines/foo-stg-statemachine");
