@@ -1,98 +1,155 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>
-    Peacekeeper
-  </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen" type="text/css">
-  <link href="custom.css" rel="stylesheet" media="screen" type="text/css">
-</head>
-<body>
-<div id="wrap">
-  <div class="container">
+  <head>
+    <title>Peacekeeper</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <link
+      href="bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+      media="screen"
+      type="text/css"
+    />
+    <link href="custom.css" rel="stylesheet" media="screen" type="text/css" />
+  </head>
+  <body>
+    <div id="wrap">
+      <div class="container">
+        <div class="page-header">
+          <h1>Peacekeeper</h1>
+        </div>
 
-    <div class="page-header">
-      <h1>
-        Peacekeeper
-      </h1>
+        <p class="lead">
+          Peacekeeper helps you visually distinguish tabs by URL patterns,
+          making it easier to identify different environments at a glance.
+        </p>
+
+        <div class="alert alert-info">
+          <h4>Getting Started</h4>
+          <p>
+            Configure your websites by editing the JSON array below. Each
+            configuration object can contain:
+          </p>
+          <ul class="mb-0">
+            <li><code>name</code>: A friendly name for the website</li>
+            <li><code>url</code>: The URL pattern to match (supports regex)</li>
+            <li>
+              <code>favicon</code>: Custom favicon configuration (optional)
+            </li>
+            <li><code>style</code>: Custom CSS string to apply (optional)</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Configuration</h3>
+          <p>Enter your website configurations in JSON format:</p>
+          <form class="form-inline" id="configsForm">
+            <textarea
+              class="field span12"
+              id="textareaConfigs"
+              rows="15"
+              placeholder="Your configs here."
+            ></textarea>
+            <br />
+            <br />
+            <a id="saveConfigs" class="btn btn-primary">Save Configuration</a>
+          </form>
+        </div>
+
+        <div class="mt-4">
+          <h3>Configuration Documents</h3>
+
+          <details>
+            <summary>Details</summary>
+            <div>
+              <div class="well">
+                <h4>Basic Options</h4>
+                <dl>
+                  <dt><code>name</code> (string, required)</dt>
+                  <dd>
+                    A descriptive name for the website. This helps you identify
+                    different configurations.
+                  </dd>
+
+                  <dt><code>url</code> (string, required)</dt>
+                  <dd>
+                    The URL pattern to match. Supports regex patterns for
+                    flexible matching.
+                    <br />Examples:
+                    <ul>
+                      <li>
+                        <code>"^https?://localhost"</code> - Matches localhost
+                        with http or https
+                      </li>
+                      <li>
+                        <code>"^https://.*\\.example\\.com"</code> - Matches all
+                        subdomains of example.com
+                      </li>
+                      <li>
+                        <code
+                          >"^https://example\\.com/(staging|development)"</code
+                        >
+                        - Matches specific paths
+                      </li>
+                    </ul>
+                  </dd>
+
+                  <dt><code>favicon</code> (object, optional)</dt>
+                  <dd>
+                    Custom favicon configuration for this website. Set to
+                    <code>false</code> to keep the original favicon.
+                    <br />Example:
+                    <pre><code>"favicon": {
+  "rel": "icon",
+  "type": "image/svg+xml",
+  "href": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M8 1 L15 14 L1 14 Z' fill='%23FFC107' stroke='%23F57F17' stroke-width='0.5'/%3E%3C/svg%3E"
+}</code></pre>
+                  </dd>
+
+                  <dt><code>style</code> (string, optional)</dt>
+                  <dd>
+                    Custom CSS string to apply to the page. Useful for
+                    color-coding different environments.
+                    <br />Example:
+                    <pre><code>"style": "#app > div > div > div > section { background-color: rgba(253, 129, 122, 1) !important; }"</code></pre>
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="mt-4">
+          <h3>Example</h3>
+
+          <details>
+            <summary>Details</summary>
+            <textarea
+              class="field span12"
+              id="textareaSample"
+              rows="20"
+              disabled
+            ></textarea>
+            <p class="text-muted mt-2">
+              <strong>Tip:</strong> Use different background colors to quickly
+              identify different environments. Green for localhost, yellow for
+              development, orange for staging, and red for production.
+            </p>
+          </details>
+        </div>
+      </div>
     </div>
-
-    <p class="lead">
-      Peacekeeper will notify you for each website you specify.
-    </p>
-
-    <div>
-      <h3>Configs</h3>
-    <ul>
-      <li>
-        alert: Run JavaScript <code>alert()</code>
-      </li>
-      <li>
-        favicon: Change the favicon
-      </li>
-      <li>
-        style: Change style <code>backgroundColor</code>
-      </li>
-      <li>
-        url: Specify the target URL
-      </li>
-    </ul>
-      <form class="form-inline" id="configsForm">
-        <textarea class="field span12" id="textareaConfigs" rows="15" placeholder="Your configs here."></textarea>
-        <br>
-        <br>
-        <a id="saveConfigs" class="btn btn-primary ">Save Configs</a>
-      </form>
+    <div id="footer">
+      <div class="container">
+        <p></p>
+        <p class="muted credit">
+          GitHub
+          <a target="_blank" href="https://github.com/yuki777/peacekeeper"
+            >yuki777/peacekeeper</a
+          >
+        </p>
+      </div>
     </div>
-
-    <div>
-      <summary>
-        <h3>Sample configs</h3>
-      </summary>
-      <details>
-        <textarea class="field span12" id="textareaSample" rows="15" placeholder="Enter a short synopsis" disabled></textarea>
-      </form>
-    </div>
-    </details>
-
-    <summary>
-      <h3>
-        Screenshots
-    </h3>
-    </summary>
-    <details>
-    <h4>
-      Before
-    </h4>
-    <ul>
-      <li>
-        Which one is LOCALHOST? You will have an accident someday.
-      </li>
-      <img src="before.png">
-    </ul>
-    <h4>
-      After
-    </h4>
-    <ul>
-      <li>
-        It's sooooo peaceful.
-      </li>
-      <img src="after.png">
-    </ul>
-    </details>
-
-  </div>
-</div>
-<div id="footer">
-  <div class="container">
-    <p></p>
-    <p class="muted credit">
-      GitHub <a target="_blank" href="https://github.com/yuki777/peacekeeper">yuki777/peacekeeper</a>
-    </p>
-  </div>
-</div>
-<script src="options.js" type="text/javascript"></script>
-</body>
+    <script src="options.js" type="module"></script>
+  </body>
 </html>

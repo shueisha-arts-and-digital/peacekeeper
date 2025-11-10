@@ -1,3 +1,5 @@
+import { getMatchedConfig } from './configs.js';
+
 chrome.tabs.onUpdated.addListener(async function (tabId, changeInfo, tab) {
   if (!tab.url) return;
 
@@ -34,17 +36,6 @@ chrome.webNavigation.onHistoryStateUpdated.addListener(async function (details) 
     }
   );
 });
-
-function getMatchedConfig(url, configs) {
-  const urlObj = new URL(url);
-  return configs.find((config) => {
-    const matchTarget = config.includeQueryParams
-      ? urlObj.origin + urlObj.pathname + urlObj.search
-      : urlObj.origin + urlObj.pathname;
-
-    return matchTarget.match(new RegExp(config.url));
-  });
-}
 
 chrome.action.onClicked.addListener(function (tab) {
   chrome.tabs.create({ url: "options.html" });
