@@ -80,11 +80,13 @@ testUrl("unknown", "https://ap-northeast-1.console.aws.amazon.com/s3/buckets/foo
 testUrl("staging", "https://ap-northeast-1.console.aws.amazon.com/s3/buckets/stg-bucket?region=ap-northeast-1&tab=objects");
 testUrl("production", "https://ap-northeast-1.console.aws.amazon.com/s3/buckets/prd-bucket?region=ap-northeast-1&tab=objects");
 
-// ECS
+// ECS, ECR, Parameter Store
 testUrl("unknown", "https://ap-northeast-1.console.aws.amazon.com/ecs/v2/clusters/foo/services/?region=ap-northeast-1");
 testUrl("development", "https://ap-northeast-1.console.aws.amazon.com/ecs/v2/clusters/dev-foo/services/?region=ap-northeast-1");
 testUrl("staging", "https://ap-northeast-1.console.aws.amazon.com/ecs/v2/clusters/stg-foo/services/?region=ap-northeast-1");
 testUrl("production", "https://ap-northeast-1.console.aws.amazon.com/ecs/v2/clusters/prd-foo/services/?region=ap-northeast-1");
+testUrl("development", "https://ap-northeast-1.console.aws.amazon.com/ecr/repositories/private/44/dev-foo?region=ap-northeast-1");
+testUrl("production", "https://ap-northeast-1.console.aws.amazon.com/systems-manager/parameters/prd-foo/description?region=ap-northeast-1&tab=Table");
 
 // includeHash tests(ElastiCache,RDS,OpenSearch,Lambda)
 testUrl("production", "https://ap-northeast-1.console.aws.amazon.com/elasticache/home?region=ap-northeast-1#/valkey/prd-cache-cluster");
@@ -94,3 +96,14 @@ testUrl("production", "https://ap-northeast-1.console.aws.amazon.com/aos/home?re
 testUrl("staging", "https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1#/functions/foo-stg-function?tab=code");
 testUrl("staging", "https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1#/applications/foo-stg-application");
 testUrl("staging", "https://ap-northeast-1.console.aws.amazon.com/lambda/home?region=ap-northeast-1#/statemachines/foo-stg-statemachine");
+testUrl("staging", "https://ap-northeast-1.console.aws.amazon.com/wafv2-pro/protections/stg-foo/d?panel=protectionPackHome&region=ap-northeast-1&scope=regional");
+
+// includeHash tests(apprunner|cloudformation|iam|states|sns)
+testUrl("production", "https://ap-northeast-1.console.aws.amazon.com/apprunner/home?region=ap-northeast-1#/services/dashboard?service_arn=arn%3Aaws%3Aapprunner%3Aap-northeast-1%3A44%3Aservice%2Fprd-foo&active_tab=logs");
+testUrl("development", "https://ap-northeast-1.console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#/stacks/stackinfo?filteringText=&filteringStatus=active&viewNested=true&stackId=arn%3Aaws%3Acloudformation%3Aap-northeast-1%3A44%3Astack%2FDevFoo");
+testUrl("production", "https://us-east-1.console.aws.amazon.com/iam/home?region=ap-northeast-1#/groups/details/foo-prd?section=users");
+testUrl("staging", "https://us-east-1.console.aws.amazon.com/iam/home?region=ap-northeast-1#/users/details/foo-stg?section=permissions");
+testUrl("staging", "https://us-east-1.console.aws.amazon.com/iam/home?region=ap-northeast-1#/roles/details/stg-foo");
+testUrl("staging", "https://us-east-1.console.aws.amazon.com/iam/home?region=ap-northeast-1#/policies/details/arn%3Aaws%3Aiam%3A%3A44%3Apolicy%2Fstg-foo?section=permissions");
+testUrl("staging", "https://ap-northeast-1.console.aws.amazon.com/states/home?region=ap-northeast-1#/statemachines/view/arn%3Aaws%3Astates%3Aap-northeast-1%3A44%3AstateMachine%3Astg-foo?type=standard");
+testUrl("staging", "https://ap-northeast-1.console.aws.amazon.com/sns/v3/home?region=ap-northeast-1#/topic/arn:aws:sns:ap-northeast-1:44:stg-foo");

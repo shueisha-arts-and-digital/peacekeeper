@@ -13,7 +13,7 @@ export function getMatchedConfig(url, configs) {
       matchTarget += urlObj.hash;
     }
 
-    return matchTarget.match(new RegExp(config.url));
+    return matchTarget.match(new RegExp(config.url, "i"));
   });
 }
 
@@ -71,7 +71,7 @@ export function getDefaultConfigs() {
       },
       url: "^https://github.com/shueisha-arts-and-digital/(backlog-mcp-server|composer-aws-assume-role-plugin|dbdb|docbase-mcp-server|github-backlog-sync|image|ms-teams-notify-orb|peacekeeper|Pj8.SentryModule|qiq-vscode-extension|sssh|vscode-bear-goto|vscode-twig-goto)",
     },
-    // S3 (params)
+    // includeQueryParams, S3
     {
       name: "development",
       alert: false,
@@ -164,13 +164,73 @@ export function getDefaultConfigs() {
       style: "#app > div > div > div > div > div > div > section { background-color: rgba(253, 129, 122, 1) !important; }",
       url: "^https://.*\\.console\\.aws\\.amazon\\.com/ecs/.*(prd|prod).*",
     },
-    // ElastiCache, RDS, OpenSearch, Lambda
+    // ECR
+    {
+      name: "development",
+      alert: false,
+      favicon: false,
+      style: "#ecr-console-app > div > div > div > section { background-color: rgba(99, 187, 253, 1) !important; }",
+      url: "^https://.*\\.console\\.aws\\.amazon\\.com/ecr/.*(dev).*",
+    },
+    {
+      name: "staging",
+      alert: false,
+      favicon: {
+        rel: "icon",
+        type: "image/svg+xml",
+        href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M8 1 L15 14 L1 14 Z' fill='%23FFC107' stroke='%23F57F17' stroke-width='0.5'/%3E%3C/svg%3E",
+      },
+      style: "#ecr-console-app > div > div > div > section { background-color: rgba(255,214,10,1) !important; }",
+      url: "^https://.*\\.console\\.aws\\.amazon\\.com/ecr/.*(stg|stage|staging).*",
+    },
+    {
+      name: "production",
+      alert: false,
+      favicon: {
+        rel: "icon",
+        type: "image/svg+xml",
+        href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M8 1 L15 14 L1 14 Z' fill='%23F44336' stroke='%23B71C1C' stroke-width='0.5'/%3E%3C/svg%3E",
+      },
+      style: "#ecr-console-app > div > div > div > section { background-color: rgba(253, 129, 122, 1) !important; }",
+      url: "^https://.*\\.console\\.aws\\.amazon\\.com/ecr/.*(prd|prod).*",
+    },
+    // Parameter Store
+    {
+      name: "development",
+      alert: false,
+      favicon: false,
+      style: "#app > div > div > div > div > main > div > div > div > div > div > nav { background-color: rgba(99, 187, 253, 1) !important; }",
+      url: "^https://.*\\.console\\.aws\\.amazon\\.com/systems-manager/.*(dev).*",
+    },
+    {
+      name: "staging",
+      alert: false,
+      favicon: {
+        rel: "icon",
+        type: "image/svg+xml",
+        href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M8 1 L15 14 L1 14 Z' fill='%23FFC107' stroke='%23F57F17' stroke-width='0.5'/%3E%3C/svg%3E",
+      },
+      style: "#app > div > div > div > div > main > div > div > div > div > div > nav { background-color: rgba(255,214,10,1) !important; }",
+      url: "^https://.*\\.console\\.aws\\.amazon\\.com/systems-manager/.*(stg|stage|staging).*",
+    },
+    {
+      name: "production",
+      alert: false,
+      favicon: {
+        rel: "icon",
+        type: "image/svg+xml",
+        href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M8 1 L15 14 L1 14 Z' fill='%23F44336' stroke='%23B71C1C' stroke-width='0.5'/%3E%3C/svg%3E",
+      },
+      style: "#app > div > div > div > div > main > div > div > div > div > div > nav { background-color: rgba(253, 129, 122, 1) !important; }",
+      url: "^https://.*\\.console\\.aws\\.amazon\\.com/systems-manager/.*(prd|prod).*",
+    },
+    // includeHash, AWS(ElastiCache, RDS, OpenSearch, Lambda, WAF)
     {
       name: "development",
       alert: false,
       favicon: false,
       style: "#app > div > div > div > section { background-color: rgba(99, 187, 253, 1) !important; }",
-      url: "^https://.*\\.console\\.aws\\.amazon\\.com/(elasticache|rds|aos|lambda)/.*(dev).*",
+      url: "^https://.*\\.console\\.aws\\.amazon\\.com/(elasticache|rds|aos|lambda|wafv2-pro)/.*(dev).*",
       includeHash: true,
     },
     {
@@ -182,7 +242,7 @@ export function getDefaultConfigs() {
         href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M8 1 L15 14 L1 14 Z' fill='%23FFC107' stroke='%23F57F17' stroke-width='0.5'/%3E%3C/svg%3E",
       },
       style: "#app > div > div > div > section { background-color: rgba(255,214,10,1) !important; }",
-      url: "^https://.*\\.console\\.aws\\.amazon\\.com/(elasticache|rds|aos|lambda)/.*(stg|stage|staging).*",
+      url: "^https://.*\\.console\\.aws\\.amazon\\.com/(elasticache|rds|aos|lambda|wafv2-pro)/.*(stg|stage|staging).*",
       includeHash: true,
     },
     {
@@ -194,7 +254,40 @@ export function getDefaultConfigs() {
         href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M8 1 L15 14 L1 14 Z' fill='%23F44336' stroke='%23B71C1C' stroke-width='0.5'/%3E%3C/svg%3E",
       },
       style: "#app > div > div > div > section { background-color: rgba(253, 129, 122, 1) !important; }",
-      url: "^https://.*\\.console\\.aws\\.amazon\\.com/(elasticache|rds|aos|lambda)/.*(prd|prod).*",
+      url: "^https://.*\\.console\\.aws\\.amazon\\.com/(elasticache|rds|aos|lambda|wafv2-pro)/.*(prd|prod).*",
+      includeHash: true,
+    },
+    // includeHash, AWS()
+    {
+      name: "development",
+      alert: false,
+      favicon: false,
+      style: "#app > div > div > div > div > section { background-color: rgba(99, 187, 253, 1) !important; }",
+      url: "^https://.*\\.console\\.aws\\.amazon\\.com/(apprunner|cloudformation|iam|states|sns)/.*(dev).*",
+      includeHash: true,
+    },
+    {
+      name: "staging",
+      alert: false,
+      favicon: {
+        rel: "icon",
+        type: "image/svg+xml",
+        href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M8 1 L15 14 L1 14 Z' fill='%23FFC107' stroke='%23F57F17' stroke-width='0.5'/%3E%3C/svg%3E",
+      },
+      style: "#app > div > div > div > div > section { background-color: rgba(255,214,10,1) !important; }",
+      url: "^https://.*\\.console\\.aws\\.amazon\\.com/(apprunner|cloudformation|iam|states|sns)/.*(stg|stage|staging).*",
+      includeHash: true,
+    },
+    {
+      name: "production",
+      alert: false,
+      favicon: {
+        rel: "icon",
+        type: "image/svg+xml",
+        href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M8 1 L15 14 L1 14 Z' fill='%23F44336' stroke='%23B71C1C' stroke-width='0.5'/%3E%3C/svg%3E",
+      },
+      style: "#app > div > div > div > div > section { background-color: rgba(253, 129, 122, 1) !important; }",
+      url: "^https://.*\\.console\\.aws\\.amazon\\.com/(apprunner|cloudformation|iam|states|sns)/.*(prd|prod).*",
       includeHash: true,
     },
   ];
