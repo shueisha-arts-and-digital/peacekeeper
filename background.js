@@ -50,7 +50,7 @@ chrome.runtime.onInstalled.addListener(function (details) {
 const getObjectFromStorage = async function (key) {
   return new Promise((resolve, reject) => {
     try {
-      chrome.storage.sync.get(key, function (value) {
+      chrome.storage.local.get(key, function (value) {
         resolve(value[key]);
       });
     } catch (ex) {

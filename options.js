@@ -3,7 +3,7 @@ import { getDefaultConfigs } from './configs.js';
 const getObjectFromLocalStorage = async function (key) {
   return new Promise((resolve, reject) => {
     try {
-      chrome.storage.sync.get(key, function (value) {
+      chrome.storage.local.get(key, function (value) {
         resolve(value[key]);
       });
     } catch (ex) {
@@ -15,7 +15,7 @@ const getObjectFromLocalStorage = async function (key) {
 const saveObjectInStorage = async function (obj) {
   return new Promise((resolve, reject) => {
     try {
-      chrome.storage.sync.set(obj, function () {
+      chrome.storage.local.set(obj, function () {
         resolve();
       });
     } catch (ex) {
