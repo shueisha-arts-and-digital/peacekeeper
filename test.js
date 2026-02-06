@@ -54,6 +54,7 @@ testUrl("unknown", "https://github.com/shueisha-arts-and-digital/.github");
 testUrl("repositories", "https://github.com/shueisha-arts-and-digital/backlog-mcp-server");
 testUrl("repositories", "https://github.com/shueisha-arts-and-digital/composer-aws-assume-role-plugin");
 testUrl("repositories", "https://github.com/shueisha-arts-and-digital/dbdb");
+testUrl("repositories", "https://github.com/shueisha-arts-and-digital/datadog-mcp-server");
 testUrl("repositories", "https://github.com/shueisha-arts-and-digital/docbase-mcp-server");
 testUrl("repositories", "https://github.com/shueisha-arts-and-digital/github-backlog-sync");
 testUrl("repositories", "https://github.com/shueisha-arts-and-digital/image");

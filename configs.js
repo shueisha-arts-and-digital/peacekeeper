@@ -69,7 +69,7 @@ export function getDefaultConfigs() {
       style: {
         background: "linear-gradient(to right, rgba(255,214,10,0.5), rgba(255,69,58,0.5))",
       },
-      url: "^https://github.com/shueisha-arts-and-digital/(backlog-mcp-server|composer-aws-assume-role-plugin|dbdb|docbase-mcp-server|github-backlog-sync|image|ms-teams-notify-orb|peacekeeper|Pj8.SentryModule|qiq-vscode-extension|sssh|vscode-bear-goto|vscode-twig-goto)",
+      url: "^https://github.com/shueisha-arts-and-digital/(backlog-mcp-server|composer-aws-assume-role-plugin|dbdb|datadog-mcp-server|docbase-mcp-server|github-backlog-sync|image|ms-teams-notify-orb|peacekeeper|Pj8.SentryModule|qiq-vscode-extension|sssh|vscode-bear-goto|vscode-twig-goto)",
     },
     // includeQueryParams, S3
     {
