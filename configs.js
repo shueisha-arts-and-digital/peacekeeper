@@ -139,7 +139,7 @@ export function getDefaultConfigs() {
       name: "development",
       alert: false,
       favicon: false,
-      style: "#app > div > div > div > div > div > div > section { background-color: rgba(99, 187, 253, 1) !important; }",
+      style: ".awsui-context-app-layout-toolbar > div > section { background-color: rgba(99, 187, 253, 1) !important; }",
       url: "^https://.*\\.console\\.aws\\.amazon\\.com/ecs/.*(dev).*",
     },
     {
@@ -150,7 +150,7 @@ export function getDefaultConfigs() {
         type: "image/svg+xml",
         href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M8 1 L15 14 L1 14 Z' fill='%23FFC107' stroke='%23F57F17' stroke-width='0.5'/%3E%3C/svg%3E",
       },
-      style: "#app > div > div > div > div > div > div > section { background-color: rgba(255,214,10,1) !important; }",
+      style: ".awsui-context-app-layout-toolbar > div > section { background-color: rgba(255,214,10,1) !important; }",
       url: "^https://.*\\.console\\.aws\\.amazon\\.com/ecs/.*(stg|stage|staging).*",
     },
     {
@@ -161,7 +161,7 @@ export function getDefaultConfigs() {
         type: "image/svg+xml",
         href: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' width='16' height='16'%3E%3Cpath d='M8 1 L15 14 L1 14 Z' fill='%23F44336' stroke='%23B71C1C' stroke-width='0.5'/%3E%3C/svg%3E",
       },
-      style: "#app > div > div > div > div > div > div > section { background-color: rgba(253, 129, 122, 1) !important; }",
+      style: ".awsui-context-app-layout-toolbar > div > section { background-color: rgba(253, 129, 122, 1) !important; }",
       url: "^https://.*\\.console\\.aws\\.amazon\\.com/ecs/.*(prd|prod).*",
     },
     // ECR
